@@ -254,7 +254,7 @@ class PushPlugin : CordovaPlugin() {
         NotificationChannel(
           it.getString(PushConstants.CHANNEL_ID),
           it.optString(PushConstants.CHANNEL_DESCRIPTION, appName),
-          it.optInt(PushConstants.CHANNEL_IMPORTANCE, NotificationManager.IMPORTANCE_DEFAULT)
+          it.optInt(PushConstants.CHANNEL_IMPORTANCE, NotificationManager.IMPORTANCE_HIGH)
         ).apply {
           /**
            * Enable Lights when Light Color is set.
@@ -304,7 +304,7 @@ class PushPlugin : CordovaPlugin() {
   private fun getNotificationChannelSound(channelData: JSONObject): Pair<Uri?, AudioAttributes?> {
     val audioAttributes = AudioAttributes.Builder()
       .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-      .setUsage(AudioAttributes.USAGE_NOTIFICATION_RINGTONE)
+      .setUsage(AudioAttributes.USAGE_NOTIFICATION)
       .build()
 
     val sound = channelData.optString(PushConstants.SOUND, PushConstants.SOUND_DEFAULT)
